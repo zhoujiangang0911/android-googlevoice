@@ -22,11 +22,12 @@ public class MyActivity extends Activity {
     /**
      * Called when the activity is first created.
      */
-    private static final  String TULIN_KEY="70618612770ae02f1f9955211f381c99";
+    private static final String TULIN_KEY = "70618612770ae02f1f9955211f381c99";
 
 
-    private Button button1,button2;
-    private TextView textView1,tv3;
+    private Button button1, button2;
+    private TextView textView1, tv3;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,28 +69,32 @@ public class MyActivity extends Activity {
                     RecognizerIntent.EXTRA_RESULTS);
             String spokenText = results.get(0);
             // Do something with spokenText
-            
+
+            textView1.setText(spokenText);
             new GetTulingThread(spokenText).start();
+
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
 
+    public class GetTulingThread extends Thread {
+        String spokenText;
 
-    public class GetTulingThread extends Thread{
-        String   spokenText;
-
-        public  GetTulingThread(String mspokenText){
-            this.spokenText =    mspokenText;
+        public GetTulingThread(String mspokenText) {
+            this.spokenText = mspokenText;
         }
+
+
         @Override
         public void run() {
+
             Tulingjiqiren(spokenText);
+
             super.run();
 
         }
     }
-
 
 
 
@@ -113,10 +118,13 @@ public class MyActivity extends Activity {
                 JSONObject JSONObject = new JSONObject(result);
                 final String strResult = JSONObject.getString("text");
                 System.out.println(strResult);
+
+
                   button2.setOnClickListener(new View.OnClickListener() {
                       @Override
                       public void onClick(final View v) {
                           Toast.makeText(getApplicationContext(),strResult,Toast.LENGTH_LONG).show();
+                          tv3.setText(strResult);
                       }
                   });
 

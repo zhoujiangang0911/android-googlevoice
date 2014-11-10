@@ -21,19 +21,27 @@
             android:text="@string/voice"
             android:textAppearance="?android:attr/textAppearanceLarge"
             />
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World, MyActivity"
-            android:id="@+id/tv_3"
-            android:textSize="20sp"
 
-            />
-    <Button android:layout_width="wrap_content"
+    <ScrollView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/bt_2"
-            android:text="@string/result"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            />
+            android:id="@+id/scrollView">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/tv_3"
+                android:textSize="20sp"
+
+                />
+            </ScrollView>
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/bt_2"
+                android:text="@string/result"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                />
+
 </LinearLayout>
 
